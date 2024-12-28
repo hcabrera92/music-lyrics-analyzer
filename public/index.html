@@ -3,8 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
   <title>Analizador de Letras</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      background-color: white;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      width: 60%;
+      text-align: center;
+    }
+    .lyrics-container, .analysis-container {
+      white-space: pre-wrap;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 1.5rem;
+      font-size: 18px;
+      height: 300px;
+      overflow-y: auto;
+      text-align: left;
+      line-height: 1.8;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -13,6 +44,7 @@
     <input type="text" id="artist" placeholder="Artista">
     <button onclick="fetchLyrics()">Buscar</button>
     <div id="result" class="lyrics-container">Introduce una canción y artista para obtener la letra</div>
+    <div id="analysis" class="analysis-container"></div>
   </div>
   <script src="app.js"></script>
 </body>

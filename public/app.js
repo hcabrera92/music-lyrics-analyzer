@@ -5,14 +5,23 @@ const fetchLyrics = async () => {
   const response = await fetch(`/api/lyrics?song=${song}&artist=${artist}`);
   const data = await response.json();
 
-  const formattedLyrics = data.lyrics
-    .split('\n')
-    .map(line => line.trim() !== '' ? `<p class="lyric-line">${line}</p>` : '<p class="lyric-line"><br></p>')  // Salto de estrofas
-    .join('');
+  document.getElementById('result').innerHTML = data.lyrics || 'No se encontraron letras.';
 
-  const resultContainer = document.getElementById('result');
-  resultContainer.innerHTML = `<div class="section">${formattedLyrics}</div>`;
-  
-  // Desplaza hacia arriba el contenedor para mostrar desde el inicio
-  resultContainer.scrollTop = 0;
+  // Si se encuentra la letra, envíala a OpenAI para analizar
+  if (data.lyrics) {
+    analyzeLyrics(data.lyrics);
+  }
+};
+
+const analyzeLyrics = async (lyrics) => {
+  const response = await fetch('/api/analyze', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ lyrics })
+  });
+
+  const data = await response.json();
+  document.getElementById('analysis').innerHTML = `<strong>Análisis:</strong><br>${data.analysis || 'Error al analizar la letra.'}`;
 };
