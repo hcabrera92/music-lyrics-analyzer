@@ -1,0 +1,52 @@
+/* public/style.css */
+@import url('https://assets.genius.com/fonts/programme_normal.woff2');
+@font-face {
+    font-family: 'Programme';
+    src: url('https://assets.genius.com/fonts/programme_normal.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  font-family: 'Programme', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 60%;
+  text-align: center;
+}
+
+.lyrics-container {
+  white-space: pre-wrap;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 2rem;
+  font-size: 18px;
+  max-height: 80vh; /* Elimina la altura máxima */
+  overflow-y: auto; /* Permite que crezca sin scroll */
+  text-align: center;
+  line-height: 1.8;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.lyric-line {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.lyrics-container br {
+  display: block;
+  margin: 15px 0;  /* Espaciado entre estrofas */
+  content: "";
+}
